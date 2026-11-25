@@ -150,3 +150,32 @@ def greedy_vec(M, alpha=0.7):
     """Candidate generation and sorting vectorised; same output as greedy_two_step."""
     from ohier import greedy_two_step
     return greedy_two_step(M, alpha=alpha)
+
+
+def scan_rows(A):
+    """Full scan with additive statistics, one vectorised row of candidates at a time.
+
+    At each step every active class i evaluates the keys of (i, j) for all other
+    active j; the best key over all rows is merged. O(n^3) work, O(n^2) row
+    evaluations. This is the scanning reference of the synthetic campaign.
+    """
+    st = _State(A)
+    H = Hierarchy(st.n)
+    idx = np.arange(st.n)
+    while st.active.sum() > 1:
+        act = idx[st.active]
+        best = None
+        for i in act:
+            others = act[act != i]
+            k_id, _ = _row_keys(st, i, others)
+            kmin = k_id.min()
+            js = others[k_id == kmin]
+            j = js[np.argmin(st.ident[js])]
+            cand = (float(kmin), int(st.ident[i]), int(st.ident[j]), int(i), int(j))
+            if best is None or cand[:3] < best[:3]:
+                best = cand
+        if best[0] == INF:
+            break
+        H.merges.append(st.merge(best[3], best[4]))
+    H.roots = [st.seq[i] for i in np.flatnonzero(st.active)]
+    return H
