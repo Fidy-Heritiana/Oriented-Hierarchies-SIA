@@ -11,6 +11,8 @@ The repository contains:
 
 The synthetic experiments of Section 6 come from a separate code base, available from the corresponding author.
 
+A related repository accompanies an earlier study of the greedy algorithm: [Study of the greedy algorithm for constructing an oriented hierarchy](https://github.com/Fidy-Heritiana/Study-of-the-greedy-algorithm-for-constructing-an-oriented-hierarchy) ([doi:10.5281/zenodo.24129903](https://doi.org/10.5281/zenodo.24129903)). Note that the two code bases use different pair cohesions: this repository uses g(p) = sqrt(1 − H2(p)²), as in the paper.
+
 ## Contents
 
 | Path | Content |
@@ -70,5 +72,5 @@ All random steps use fixed seeds; rerunning the commands reproduces the files in
 
 ## Licence
 
-- Code: [to be chosen by the authors].
+- Code: MIT (see `LICENSE`).
 - Data: redistributed from the R package CDM under its licence, GPL (≥ 2); see `data/README.md`.

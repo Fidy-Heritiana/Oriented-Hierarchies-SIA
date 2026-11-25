@@ -3,5 +3,7 @@ message: "If you use this code or these data, please cite the paper below."
 title: "Geometrically cohesive oriented hierarchies: code and data"
 authors:
   - family-names: "Andrianarivony"
-    given-names: "Fidy"
+    given-names: "Fidy Heritiana"
+    orcid: "https://orcid.org/0009-0008-5371-3262"
 repository-code: "https://github.com/Fidy-Heritiana/oriented-hierarchies-sia"
+license: MIT
