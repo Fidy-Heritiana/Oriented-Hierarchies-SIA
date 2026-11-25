@@ -3,10 +3,13 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fidy-Heritiana/Oriented-Hierarchies-SIA/blob/main/demo.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Fidy-Heritiana/Oriented-Hierarchies-SIA/main?labpath=demo.ipynb)
 [![Streamlit app](https://img.shields.io/badge/Streamlit-Live%20app-FF4B4B?logo=streamlit&logoColor=white)](https://oriented-hierarchies-sia.streamlit.app/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24544349.svg)](https://doi.org/10.5281/zenodo.24544349)
 
 Code, data and figures for the paper:
 
 > F. H. Andrianarivony *et al.* **Geometrically cohesive oriented hierarchies: exact quadratic computation and limits of a marginal selection.** Manuscript submitted for publication.
+
+Archived version of this repository: [doi:10.5281/zenodo.24544349](https://doi.org/10.5281/zenodo.24544349).
 
 The repository contains:
 - exact implementations of the maximum-cohesion rule of statistical implicative analysis (full scan, heap and matrix tournament);
