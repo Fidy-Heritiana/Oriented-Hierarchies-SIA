@@ -1,0 +1,128 @@
+\begin{table}[htbp]
+	\centering
+	\caption{Real data sets: number of examinees $m$, items $n$, attributes $\kappa$ and mean proportion of successes $\bar p$. Classical intensity with $m_x\leq m_y$: number of positive pair cohesions, percentage of them equal to one in floating point, number of merges of the exact reference hierarchy, and percentage of these merges with a cohesion of at least $0.999$.}\label{tab:realdata}
+	\small
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{lrrrrrrrr}\toprule
+		Data set & $m$ & $n$ & $\kappa$ & $\bar p$ & Positive & $=1$ (\%) & Merges & $\geq0.999$ (\%)\\\midrule
+		Fractions & 536 & 20 & 8 & 0.53 & 190 & 63.7 & 13 & 100.0\\
+		ECPE & 2922 & 28 & 3 & 0.71 & 378 & 4.0 & 20 & 80.0\\
+		TIMSS & 757 & 23 & 13 & 0.54 & 254 & 3.1 & 16 & 87.5\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Exact reference and two-stage greedy on the real data sets (entropic intensity, $\alpha=0.7$, full samples). $K_G$, $K_N$: numbers of roots; $D_J$ and $D_J^{\rm int}$: Jaccard distances with and without singletons; number of greedy merges with zero cohesion; number of intervals $I(F_N)$; recall and precision of the reference classes among the intervals, singletons included.}\label{tab:realfidelity}
+	\small
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{lrrrrrrrr}\toprule
+		Data set & $K_G$ & $K_N$ & $D_J$ & $D_J^{\rm int}$ & Zero coh. & $I(F_N)$ & Recall & Precision\\\midrule
+		Fractions & 8 & 9 & 0.091 & 0.231 & 0 & 34 & 0.938 & 0.882\\
+		ECPE & 22 & 25 & 0.088 & 0.500 & 0 & 31 & 0.912 & 1.000\\
+		TIMSS & 11 & 15 & 0.167 & 0.462 & 0 & 31 & 0.857 & 0.968\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Bootstrap stability ($B=1000$, entropic intensity, $\alpha=0.7$). Mean support of the ordered classes of the full-sample hierarchies $\mathcal H_G$ and $\mathcal H_N$; distance $D_J^{\rm int}$ between each replicate hierarchy and the full-sample hierarchy (mean); paired difference of $D_J^{\rm int}$, greedy minus exact (mean and 95\% percentile interval).}\label{tab:realstability}
+	\small
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{lccccc}\toprule
+		Data set & \multicolumn{2}{c}{Class support} & \multicolumn{2}{c}{$D_J^{\rm int}$ to full sample} & Paired difference\\ & $\mathcal H_G$ & $\mathcal H_N$ & $\mathcal H_G$ & $\mathcal H_N$ & $\mathcal H_N-\mathcal H_G$\\\midrule
+		Fractions & 0.22 & 0.23 & 0.87 & 0.86 & $-$0.01 [$-$0.15, 0.11]\\
+		ECPE & 0.29 & 0.37 & 0.81 & 0.75 & $-$0.06 [$-$0.50, 0.20]\\
+		TIMSS & 0.46 & 0.55 & 0.68 & 0.62 & $-$0.06 [$-$0.35, 0.17]\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Implications on the full samples (entropic intensity) and their status with respect to the Q-matrix (Definition~\ref{def:status}): consistent, equal, reversed, incomparable. Share: proportion of consistent-or-equal implications. Diff.: the same share over all pairs with $m_x\leq m_y$ (difficulty baseline). Perm. and $p$: mean share and one-sided $p$-value under 10\,000 random relabellings of the items. For ECPE the Q-matrix is closed under the attribute hierarchy.}\label{tab:realvalidity}
+	\small
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{llrrrrrrrrr}\toprule
+		Data set & Method & Impl. & Cons. & Eq. & Rev. & Inc. & Share & Diff. & Perm. & $p$\\\midrule
+		Fractions & $\mathcal H_G$ & 17 & 8 & 1 & 3 & 5 & 0.529 & 0.463 & 0.263 & 0.021\\
+		 & $\mathcal H_N$ & 14 & 6 & 1 & 2 & 5 & 0.500 &  & 0.263 & 0.048\\
+		 & IITA & 204 & 84 & 7 & 15 & 98 & 0.446 &  & 0.265 & $<$0.001\\
+		\midrule
+		ECPE & $\mathcal H_G$ & 6 & 4 & 2 & 0 & 0 & 1.000 & 0.815 & 0.680 & 0.099\\
+		 & $\mathcal H_N$ & 3 & 3 & 0 & 0 & 0 & 1.000 &  & 0.678 & 0.313\\
+		 & IITA & 160 & 90 & 51 & 19 & 0 & 0.881 &  & 0.677 & 0.015\\
+		\midrule
+		TIMSS & $\mathcal H_G$ & 14 & 2 & 1 & 1 & 10 & 0.214 & 0.067 & 0.079 & 0.090\\
+		 & $\mathcal H_N$ & 8 & 0 & 1 & 0 & 7 & 0.125 &  & 0.079 & 0.479\\
+		 & IITA & 181 & 7 & 6 & 11 & 157 & 0.072 &  & 0.079 & 0.706\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Agreement with the Q-matrices beyond difficulty ordering: for each bootstrap replicate, share of consistent-or-equal implications minus the difficulty baseline of the same replicate; mean and 95\% percentile interval over $B=1000$ replicates. Last row of each block: paired difference between the exact reference and the greedy.}\label{tab:realgain}
+	\small
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{llrc}\toprule
+		Data set & Comparison & Mean & 95\% interval\\\midrule
+		Fractions & $\mathcal H_G$ $-$ difficulty & 0.031 & [$-$0.111, 0.201]\\
+		 & $\mathcal H_N$ $-$ difficulty & 0.053 & [$-$0.114, 0.224]\\
+		 & IITA $-$ difficulty & $-$0.012 & [$-$0.034, 0.013]\\
+		 & $\mathcal H_G$ $-$ $\mathcal H_N$ (paired) & $-$0.022 & [$-$0.192, 0.150]\\
+		\midrule
+		ECPE & $\mathcal H_G$ $-$ difficulty & 0.152 & [$-$0.004, 0.196]\\
+		 & $\mathcal H_N$ $-$ difficulty & 0.183 & [0.172, 0.196]\\
+		 & IITA $-$ difficulty & 0.066 & [0.043, 0.094]\\
+		 & $\mathcal H_G$ $-$ $\mathcal H_N$ (paired) & $-$0.031 & [$-$0.167, 0.000]\\
+		\midrule
+		TIMSS & $\mathcal H_G$ $-$ difficulty & 0.053 & [$-$0.067, 0.183]\\
+		 & $\mathcal H_N$ $-$ difficulty & 0.085 & [$-$0.071, 0.266]\\
+		 & IITA $-$ difficulty & 0.008 & [$-$0.001, 0.019]\\
+		 & $\mathcal H_G$ $-$ $\mathcal H_N$ (paired) & $-$0.032 & [$-$0.189, 0.125]\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\caption{The four implications with the largest bootstrap support in the exact reference hierarchy ($B=1000$), their support in the greedy hierarchy and under IITA, and their status with respect to the Q-matrix. Items are numbered as in the data sets.}\label{tab:realtop}
+	\small
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{llrrrl}\toprule
+		Data set & Implication & $\mathcal H_G$ & $\mathcal H_N$ & IITA & Status\\\midrule
+		Fractions & I11$\to$I4 & 0.70 & 0.74 & 1.00 & reversed\\
+		 & I15$\to$I3 & 0.60 & 0.57 & 1.00 & incomparable\\
+		 & I3$\to$I2 & 0.56 & 0.57 & 1.00 & equal\\
+		 & I5$\to$I9 & 0.53 & 0.15 & 0.86 & consistent\\
+		\midrule
+		ECPE & E27$\to$E8 & 0.54 & 0.54 & 1.00 & consistent\\
+		 & E20$\to$E15 & 0.43 & 0.43 & 1.00 & consistent\\
+		 & E3$\to$E23 & 0.35 & 0.00 & 0.56 & consistent\\
+		 & E24$\to$E8 & 0.34 & 0.31 & 1.00 & equal\\
+		\midrule
+		TIMSS & T3$\to$T1 & 0.93 & 0.93 & 1.00 & incomparable\\
+		 & T20$\to$T6 & 0.87 & 0.87 & 1.00 & incomparable\\
+		 & T21$\to$T7 & 0.82 & 0.82 & 1.00 & incomparable\\
+		 & T19$\to$T8 & 0.57 & 0.46 & 1.00 & incomparable\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Running times in seconds of a second, vectorised implementation (one core), regime P ($n-1$ merges, one matrix per size, median of three runs up to $n=800$). The heap is not run beyond $n=800$ because it stores $2(n-1)^2$ entries. All implementations returned the same merge sequence.}\label{tab:realscaling}
+	\begin{tabular}{rrrrr}\toprule
+		$n$ & Merges & Scanning & Heap & Tournament\\\midrule
+		100 & 99 & 0.01 & 0.02 & 0.14\\
+		200 & 199 & 0.09 & 0.13 & 0.28\\
+		400 & 399 & 0.55 & 0.80 & 0.74\\
+		800 & 799 & 4.37 & 5.45 & 2.26\\
+		1600 & 1599 & 41.74 & -- & 8.32\\
+		3200 & 3199 & 451.42 & -- & 30.95\\
+		\bottomrule
+	\end{tabular}
+\end{table}

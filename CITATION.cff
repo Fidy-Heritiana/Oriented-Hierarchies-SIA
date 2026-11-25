@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use this code or these data, please cite the paper below."
+title: "Geometrically cohesive oriented hierarchies: code and data"
+authors:
+  - family-names: "Andrianarivony"
+    given-names: "Fidy"
+repository-code: "https://github.com/Fidy-Heritiana/oriented-hierarchies-sia"
