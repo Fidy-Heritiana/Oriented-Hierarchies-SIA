@@ -1,0 +1,30 @@
+{
+  "title": "Oriented-Hierarchies-SIA: code and data for \"Geometrically cohesive oriented hierarchies: exact quadratic computation and limits of a marginal selection\"",
+  "upload_type": "software",
+  "description": "<p>Code, data and figures accompanying the paper <em>Geometrically cohesive oriented hierarchies: exact quadratic computation and limits of a marginal selection</em>.</p><ul><li>Exact implementations of the maximum geometric cohesion rule of statistical implicative analysis: full scan, heap (O(n<sup>2</sup> log n)) and matrix tournament (O(n<sup>2</sup>)).</li><li>The two-stage greedy (marginal) selection.</li><li>Synthetic campaigns of Section 6 (regimes U, P, O) and the application of Section 7 to three public data sets of test responses (fraction subtraction, ECPE, TIMSS 2003), with bootstrap resampling, inductive item tree analysis and PVAF Q-matrix validation.</li><li>A notebook (demo.ipynb), a command-line script (code/make_figures.py) and a Streamlit app (streamlit_app.py) that reproduce Figures 1-5 of the paper.</li></ul><p>The code is released under the MIT licence. The data sets are redistributed from the R package CDM (version 8.3-14) under its licence, GPL (&ge; 2).</p>",
+  "creators": [
+    {
+      "name": "Andrianarivony, Fidy Heritiana",
+      "orcid": "0009-0008-5371-3262"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "statistical implicative analysis",
+    "oriented hierarchy",
+    "agglomerative clustering",
+    "greedy algorithm",
+    "matrix tournament",
+    "bootstrap",
+    "Q-matrix",
+    "cognitive diagnosis"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.24129903",
+      "relation": "references",
+      "scheme": "doi"
+    }
+  ],
+  "version": "1.0.0"
+}

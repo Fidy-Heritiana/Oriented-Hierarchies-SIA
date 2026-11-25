@@ -5,5 +5,12 @@ authors:
   - family-names: "Andrianarivony"
     given-names: "Fidy Heritiana"
     orcid: "https://orcid.org/0009-0008-5371-3262"
-repository-code: "https://github.com/Fidy-Heritiana/oriented-hierarchies-sia"
+repository-code: "https://github.com/Fidy-Heritiana/Oriented-Hierarchies-SIA"
 license: MIT
+version: "1.0.0"
+keywords:
+  - statistical implicative analysis
+  - oriented hierarchy
+  - matrix tournament
+  - bootstrap
+  - Q-matrix

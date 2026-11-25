@@ -2,6 +2,7 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fidy-Heritiana/Oriented-Hierarchies-SIA/blob/main/demo.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Fidy-Heritiana/Oriented-Hierarchies-SIA/main?labpath=demo.ipynb)
+[![Streamlit app](https://img.shields.io/badge/Streamlit-Live%20app-FF4B4B?logo=streamlit&logoColor=white)](https://oriented-hierarchies-sia.streamlit.app/)
 
 Code, data and figures for the paper:
 
@@ -12,7 +13,8 @@ The repository contains:
 - the two-stage greedy (marginal) selection;
 - the synthetic campaigns of Section 6 (regimes U, P and O);
 - the analyses of three public data sets of test responses (Section 7);
-- a demonstration notebook that reproduces the five figures of the paper.
+- a demonstration notebook that reproduces the five figures of the paper;
+- an interactive Streamlit app.
 
 A related repository accompanies an earlier study of the greedy algorithm: [Study of the greedy algorithm for constructing an oriented hierarchy](https://github.com/Fidy-Heritiana/Study-of-the-greedy-algorithm-for-constructing-an-oriented-hierarchy) ([doi:10.5281/zenodo.24129903](https://doi.org/10.5281/zenodo.24129903)). The two code bases use different pair cohesions; this repository uses g(p) = sqrt(1 − H2(p)²), as in Definition 1 of the paper.
 
@@ -50,6 +52,20 @@ The figures are written to `figures/` with the file names used in the manuscript
 
 The full run also writes Tables 4–7 (LaTeX) and the raw campaign results to `results/synthetic/`. Running times depend on the machine; the other quantities are reproduced up to the sampling variability of the random matrices.
 
+## Interactive app
+
+The Streamlit app explores the two constructions interactively: one random matrix of regime U, P or O (hierarchies, Jaccard distances, zero-cohesion merges, intervals), the effect of the threshold α (Figure 2), running times (Figure 1), the growth of the greedy forest (Figure 3), and the three real data sets with their Q-matrices and bootstrap supports (Figures 4–5).
+
+Online: https://oriented-hierarchies-sia.streamlit.app/. Locally:
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+streamlit run streamlit_app.py
+```
+
 ## Reproducing the other results
 
 Check that the three exact implementations agree (547 inputs, exact ties included):
@@ -83,6 +99,7 @@ All random steps use fixed seeds.
 | Path | Content |
 |---|---|
 | `demo.ipynb` | Demonstration notebook: Figures 1–5 |
+| `streamlit_app.py` | Interactive Streamlit app |
 | `code/ohier.py` | Implication intensities (classical and entropic), pair and class cohesion, exact rule (scan, heap, tournament), two-stage greedy (Algorithm 1), Jaccard and interval diagnostics |
 | `code/fast.py` | Vectorised exact implementations (Table 14) and the row-wise full scan used in Figure 1 |
 | `code/synthetic.py` | Synthetic campaigns of Section 6 and Figures 1–3, Tables 4–7 |

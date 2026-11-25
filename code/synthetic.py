@@ -81,7 +81,8 @@ def boot_ci(x, B=2000, seed=0, stat=np.mean):
 # --------------------------------------------------------------------------
 
 
-def timing_campaign(ns=(20, 40, 80, 160, 320), matrices=7, repeats=3, alpha=0.7, seed=2026, verbose=True):
+def timing_campaign(ns=(20, 40, 80, 160, 320), matrices=7, repeats=3, alpha=0.7, seed=2026, verbose=True,
+                    regimes=REGIMES):
     """One row per (regime, n, matrix, method): median time over the repeats."""
     rng = np.random.default_rng(seed)
     runners = {
@@ -91,7 +92,7 @@ def timing_campaign(ns=(20, 40, 80, 160, 320), matrices=7, repeats=3, alpha=0.7,
         "Exact: scan": lambda M, A: scan_rows(A),
     }
     rows = []
-    for regime in REGIMES:
+    for regime in regimes:
         for n in ns:
             for k in range(matrices):
                 M = generate(regime, n, rng)
@@ -122,8 +123,10 @@ def timing_campaign(ns=(20, 40, 80, 160, 320), matrices=7, repeats=3, alpha=0.7,
 
 def fig_timing(df, path=None):
     """Figure 1: median times, error bars = quartiles across matrices."""
-    fig, axes = plt.subplots(1, 3, figsize=(10, 3.2), sharey=False)
-    for ax, regime in zip(axes, REGIMES):
+    regimes = [r for r in REGIMES if r in set(df.regime)]
+    fig, axes = plt.subplots(1, len(regimes), figsize=(10 * len(regimes) / 3 + 0.5, 3.2), squeeze=False)
+    axes = axes[0]
+    for ax, regime in zip(axes, regimes):
         d = df[df.regime == regime]
         for m in METHODS:
             g = d[d.method == m].groupby("n")["time"]
@@ -169,11 +172,12 @@ def table_timing(df, n=None):
 # --------------------------------------------------------------------------
 
 
-def fidelity_campaign(ns=(20, 50, 100, 200), matrices=30, alphas=ALPHAS, seed=2027, verbose=True):
+def fidelity_campaign(ns=(20, 50, 100, 200), matrices=30, alphas=ALPHAS, seed=2027, verbose=True,
+                      regimes=REGIMES):
     """One row per (regime, n, matrix, alpha) with the diagnostics of Sections 6.5-6.6."""
     rng = np.random.default_rng(seed)
     rows = []
-    for regime in REGIMES:
+    for regime in regimes:
         for n in ns:
             for k in range(matrices):
                 M = generate(regime, n, rng)
@@ -267,7 +271,7 @@ def growth_campaign(ns=(50, 100, 200, 400, 800), matrices=30, alpha=0.7, seed=20
             G = greedy_two_step(M, alpha=alpha)
             K = len(G.paths)
             I = sum(len(p) * (len(p) + 1) // 2 for p in G.paths)
-            rows.append(dict(n=n, matrix=k, K=K, I=I, I_over_n2=I / n ** 2))
+            rows.append(dict(n=n, matrix=k, K=K, I=I, I_over_n2=I / n ** 2, alpha=alpha))
         if verbose:
             print(f"growth n={n} done", flush=True)
     return pd.DataFrame(rows)
@@ -291,7 +295,8 @@ def fig_growth(df, path=None):
         ax.set_xticks(ns, [str(v) for v in ns])
         ax.set_xlabel("n", fontsize=8)
         ax.set_ylabel(lab, fontsize=8)
-        ax.set_title(r"U, $\alpha = 0.7$", fontsize=9)
+        a = df["alpha"].iloc[0] if "alpha" in df else 0.7
+        ax.set_title(rf"U, $\alpha = {a:g}$", fontsize=9)
         ax.tick_params(labelsize=7)
         ax.grid(alpha=0.3)
     fig.tight_layout()
